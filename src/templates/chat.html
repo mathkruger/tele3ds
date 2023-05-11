@@ -1,0 +1,10 @@
+<form action="/chat" method="post">
+    {{ hidden_inputs }}
+    <input required name="message" type="text" placeholder="type a message" />
+    <button class="btn btn-primary btn-ghost" type="submit">Submit</button>
+</form>
+
+<h2>Messages: </h2>
+<ul>
+    {{ messages }}
+</ul>

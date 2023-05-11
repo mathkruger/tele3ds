@@ -1,0 +1,54 @@
+body,
+html,
+main,
+div,
+form,
+input,
+button,
+a,
+p,
+h1 {
+    font-family: "Lucida Console", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    background-color: #222225;
+    color: #e8e9ed;
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+h1 {
+    margin-bottom: 16px;
+}
+
+input {
+    display: block;
+    width: 80%;
+    height: 32px;
+    border: 0;
+    padding: 0 10px;
+    margin: 0 auto;
+    margin-bottom: 16px;
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+    padding: 16px 32px;
+    border: 0;
+    background: white;
+    border-radius: 10px;
+}
+
+a {
+    color: #e8e9ed;
+}

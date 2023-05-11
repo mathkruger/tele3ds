@@ -1,0 +1,21 @@
+{
+  "name": "tele3ds-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "create-user-database": "touch src/db/users.sqlite"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "sqlite": "^4.2.0",
+    "sqlite3": "^5.1.6",
+    "telegraf": "^4.12.2"
+  }
+}
