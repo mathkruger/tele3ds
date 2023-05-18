@@ -1,7 +1,7 @@
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
 
-const messagesService = {
+const messagesRepository = {
     async init() {
         this.db = await open({filename: ":memory:", driver: sqlite3.Database, mode: sqlite3.OPEN_READWRITE});
         if (this.db) {
@@ -28,4 +28,4 @@ const messagesService = {
     }
 }
 
-export default messagesService;
+export default messagesRepository;

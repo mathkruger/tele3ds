@@ -1,9 +1,9 @@
 import path from "path";
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
-import { __dirname } from "../utils.js";
+import { __dirname } from "../_utils.js";
 
-const usersService = {
+const usersRepository = {
     async init() {
         this.db = await open({
             filename: path.resolve(__dirname, "db/users.sqlite"),
@@ -30,18 +30,14 @@ const usersService = {
         }
     },
 
-    async insert(payload) {
-        const existingUser = await this.get(payload.id);
-        if (!existingUser) {
-            const sql = "insert into users (id, username) values (?, ?)";
-            await this.db.run(sql, [payload.id, payload.username]);
-        }
+    insert(payload) {
+        const sql = "insert into users (id, username) values (?, ?)";
+        return this.db.run(sql, [payload.id, payload.username]);
+    },
 
-        const existingUserChatRoom = await this.getUserRooms(payload.id);
-        if (!existingUserChatRoom || !existingUserChatRoom.find(x => x.chat_id == payload.chatId)) {
-            const roomSql = "insert into users_chatroom (chat_id, chat_name, user_id) values (?, ?, ?)";
-            await this.db.run(roomSql, [payload.chatId, payload.chatName, payload.id]);
-        }
+    insertUserRoom(payload) {
+        const roomSql = "insert into users_chatroom (chat_id, chat_name, user_id) values (?, ?, ?)";
+        return this.db.run(roomSql, [payload.chatId, payload.chatName, payload.userId]);
     },
 
     get(id) {
@@ -55,4 +51,4 @@ const usersService = {
     }
 }
 
-export default usersService;
+export default usersRepository;
