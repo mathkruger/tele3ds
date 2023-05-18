@@ -13,7 +13,7 @@ async function registerUser(ctx) {
     };
 
     await usersService.createUserOrSkip(payload);
-    await ctx.sendMessage("Your unique ID is: " + payload.id);
+    await ctx.telegram.sendMessage(ctx.message.from.id, `You registered for the group "${payload.chatName}". Your unique ID is: ${payload.id}. Use it to create your Tele3DS account.`);
 }
 
 function generateBot(token) {

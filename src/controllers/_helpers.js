@@ -1,6 +1,7 @@
 import path from "path";
 import fs from "fs";
-import { __dirname } from "../_utils.js";
+import { __dirname, compareHash } from "../_utils.js";
+import usersService from "../services/users.service.js";
 
 function getTemplate(name) {
     const templatePath = path.resolve(__dirname, `templates/${name}.html`);
@@ -14,7 +15,29 @@ function sendHTML(res, html) {
     res.end();
 }
 
+async function isUserLogged(req) {
+    const sessionToken = req.cookies["sessionId"];
+    const userId = req.cookies["userId"];
+    if (!sessionToken || !userId) {
+        return false;
+    }
+
+    const session = await usersService.getUserSession(userId);
+    if (!session) {
+        return false;
+    }
+
+    const isSessionValid = await compareHash(sessionToken, session.session_id);
+    return isSessionValid;
+}
+
+function goToLogout(res) {
+    res.redirect("/logout");
+};
+
 export {
     getTemplate,
-    sendHTML
+    sendHTML,
+    isUserLogged,
+    goToLogout
 };

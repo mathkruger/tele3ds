@@ -1,4 +1,4 @@
-import { startupDependencies, startupListeners } from "./_startup.js";
+import { startupDependencies, startupApp } from "./_startup.js";
 
 startupDependencies();
-startupListeners();
+startupApp();

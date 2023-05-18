@@ -12,7 +12,7 @@ function startupDependencies() {
     usersRepository.init();
 }
 
-function startupListeners() {
+function startupApp() {
     const port = process.env.PORT || 3000;
     const token = process.env.TELEGRAM_BOT_KEY;
 
@@ -37,5 +37,5 @@ function startupListeners() {
 
 export {
     startupDependencies,
-    startupListeners
+    startupApp
 }
